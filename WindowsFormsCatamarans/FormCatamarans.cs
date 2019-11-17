@@ -12,7 +12,7 @@ namespace WindowsFormsCatamarans
 {
     public partial class FormCatamarans : Form
     {
-        private Catamaran cat;
+        private ITransport cat;
         public FormCatamarans()
         {
             InitializeComponent();
@@ -29,7 +29,7 @@ namespace WindowsFormsCatamarans
         private void buttonCreateCatamaran_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
-            cat = new Catamaran(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue, Color.Yellow, true, true);
+            cat = new CarCat(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue);
             cat.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxCatamarans.Width, pictureBoxCatamarans.Height);
             Draw();
         }
@@ -51,6 +51,14 @@ namespace WindowsFormsCatamarans
                     cat.MoveBoat(Direction.Right);
                     break;
             }
+            Draw();
+        }
+
+        private void buttonCreateBoat_Click(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+            cat = new CatamaranGrade(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue, Color.Yellow, true, true);
+            cat.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxCatamarans.Width, pictureBoxCatamarans.Height);
             Draw();
         }
     }
