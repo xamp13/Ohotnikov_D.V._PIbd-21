@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
-using WindowsFormsCatamarans;
 
-namespace WindowsFormsCars
+namespace WindowsFormsCatamarans
 {
     class Parking<T> where T : class, ITransport
     {
