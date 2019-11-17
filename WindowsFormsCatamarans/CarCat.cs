@@ -58,7 +58,7 @@ namespace WindowsFormsCatamarans
         public override void DrawCatamaran(Graphics g)
         {
             Pen pen = new Pen(Color.Black);
-            Brush brBlue = new SolidBrush(Color.Blue);
+            Brush brBlue = new SolidBrush(MainColor);
             Brush brGray = new SolidBrush(Color.Gray);
 
             g.FillRectangle(brBlue, _startPosX, _startPosY, 90, 10);
