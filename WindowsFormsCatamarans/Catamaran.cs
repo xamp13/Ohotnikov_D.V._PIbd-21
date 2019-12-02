@@ -7,13 +7,6 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsCatamarans
 {
-    public enum Direction
-    {
-        Up,
-        Down,
-        Left,
-        Right
-    }
     class Catamaran
     {
         private float _startPosX;
@@ -96,7 +89,7 @@ namespace WindowsFormsCatamarans
         {
             Pen pen = new Pen(Color.Black);
 
-            if (Sail)                                                               // парус
+            if (Sail)
             {
                 Brush brGray = new SolidBrush(Color.Gray);
                 g.FillRectangle(brGray, _startPosX + 20, _startPosY + 17, 65, 5);
@@ -110,7 +103,7 @@ namespace WindowsFormsCatamarans
                 g.FillRectangle(brBlack, _startPosX + 50, _startPosY + 27, 3, 8);
             }
 
-            if (Motor)                                                              // поплавки
+            if (Motor)
             {
                 Brush brBlack = new SolidBrush(Color.Black);
                 g.FillRectangle(brBlack, _startPosX, _startPosY - 5, 30, 7);
@@ -120,11 +113,10 @@ namespace WindowsFormsCatamarans
 
             }
 
-            Brush brBlue = new SolidBrush(Color.Blue);                               // основа
+            Brush brBlue = new SolidBrush(Color.Blue);
             g.FillRectangle(brBlue, _startPosX, _startPosY, 90, 10);
             g.FillRectangle(brBlue, _startPosX, _startPosY + 35, 90, 10);
             g.FillRectangle(brBlue, _startPosX + 35, _startPosY, 10, 35);
-
         }
     }
 }

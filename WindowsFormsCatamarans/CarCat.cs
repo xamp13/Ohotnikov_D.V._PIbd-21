@@ -9,7 +9,6 @@ namespace WindowsFormsCatamarans
 {
     public class CarCat : Vecatamaran
     {
-
         protected const int catamaranWidth = 90;
         protected const int catamaranHeight = 50;
 
@@ -66,6 +65,5 @@ namespace WindowsFormsCatamarans
             g.FillRectangle(brGray, _startPosX, _startPosY + 5, 90, 35);
             g.FillRectangle(brBlue, _startPosX + 35, _startPosY, 10, 45);
         }
-
     }
 }
