@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsCatamarans
 {
-    class Enum
+    public enum Direction
     {
+        Up,
+        Down,
+        Left,
+        Right
     }
 }

@@ -62,7 +62,6 @@ namespace WindowsFormsCatamarans
             g.FillRectangle(brBlue, _startPosX, _startPosY, 90, 10);
             g.FillRectangle(brBlue, _startPosX, _startPosY + 35, 90, 10);
             g.FillRectangle(brBlue, _startPosX + 35, _startPosY, 10, 35);
-
         }
     }
 }
