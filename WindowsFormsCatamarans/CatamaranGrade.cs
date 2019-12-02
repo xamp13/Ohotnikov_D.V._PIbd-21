@@ -39,7 +39,6 @@ namespace WindowsFormsCatamarans
                 g.FillRectangle(brGray, _startPosX + 20, _startPosY + 22, 65, 5);
 
                 Brush brBlack = new SolidBrush(Color.Black);
-
                 g.FillRectangle(brBlack, _startPosX + 50, _startPosY + 10, 3, 7);
                 g.FillRectangle(brBlack, _startPosX + 60, _startPosY + 10, 3, 7);
                 g.FillRectangle(brBlack, _startPosX + 60, _startPosY + 27, 3, 8);
