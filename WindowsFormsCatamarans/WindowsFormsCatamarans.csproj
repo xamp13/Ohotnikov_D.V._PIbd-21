@@ -49,6 +49,7 @@
     <Compile Include="CarCat.cs" />
     <Compile Include="Catamaran.cs" />
     <Compile Include="CatamaranGrade.cs" />
+    <Compile Include="Enum.cs" />
     <Compile Include="FormCatamarans.cs">
       <SubType>Form</SubType>
     </Compile>

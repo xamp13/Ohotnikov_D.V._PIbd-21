@@ -9,7 +9,6 @@ namespace WindowsFormsCatamarans
 {
     public class CatamaranGrade : CarCat
     {
-
         public Color DopColor { private set; get; }
 
         public bool Sail { private set; get; }
@@ -25,7 +24,6 @@ namespace WindowsFormsCatamarans
             DopColor = dopColor;
             Sail = sail;
             Motor = motor;
-
         }
 
         public override void DrawCatamaran(Graphics g)
@@ -55,14 +53,11 @@ namespace WindowsFormsCatamarans
                 g.FillRectangle(brBlack, _startPosX, _startPosY + 43, 90, 7);
                 g.FillRectangle(brBlack, _startPosX + 15, _startPosY - 5, 3, 45);
                 g.FillRectangle(brBlack, _startPosX - 5, _startPosY + 15, 20, 15);
-
             }
-
             Brush brBlue = new SolidBrush(MainColor);
             g.FillRectangle(brBlue, _startPosX, _startPosY, 90, 10);
             g.FillRectangle(brBlue, _startPosX, _startPosY + 35, 90, 10);
             g.FillRectangle(brBlue, _startPosX + 35, _startPosY, 10, 35);
-
         }
     }
 }

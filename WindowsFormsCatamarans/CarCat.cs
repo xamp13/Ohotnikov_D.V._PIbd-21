@@ -9,7 +9,6 @@ namespace WindowsFormsCatamarans
 {
     public class CarCat : Vecatamaran
     {
-
         protected const int catamaranWidth = 90;
         protected const int catamaranHeight = 50;
 
