@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Catamaran.cs" />
+    <Compile Include="Enum.cs" />
     <Compile Include="FormCatamarans.cs">
       <SubType>Form</SubType>
     </Compile>
