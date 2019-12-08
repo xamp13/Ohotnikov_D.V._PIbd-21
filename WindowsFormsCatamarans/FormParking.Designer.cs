@@ -32,7 +32,7 @@
             this.pictureBoxTake = new System.Windows.Forms.PictureBox();
             this.buttonTakeoff = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.maskedTextBoxPlace = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBoxParking = new System.Windows.Forms.MaskedTextBox();
             this.pictureBoxParking = new System.Windows.Forms.PictureBox();
             this.listBoxlevels = new System.Windows.Forms.ListBox();
             this.buttonRequest = new System.Windows.Forms.Button();
@@ -46,7 +46,7 @@
             this.groupBoxTakeoff.Controls.Add(this.pictureBoxTake);
             this.groupBoxTakeoff.Controls.Add(this.buttonTakeoff);
             this.groupBoxTakeoff.Controls.Add(this.label1);
-            this.groupBoxTakeoff.Controls.Add(this.maskedTextBoxPlace);
+            this.groupBoxTakeoff.Controls.Add(this.maskedTextBoxParking);
             this.groupBoxTakeoff.Location = new System.Drawing.Point(912, 288);
             this.groupBoxTakeoff.Name = "groupBoxTakeoff";
             this.groupBoxTakeoff.Size = new System.Drawing.Size(110, 211);
@@ -81,12 +81,12 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Место:";
             // 
-            // maskedTextBoxPlace
+            // maskedTextBoxParking
             // 
-            this.maskedTextBoxPlace.Location = new System.Drawing.Point(54, 39);
-            this.maskedTextBoxPlace.Name = "maskedTextBoxPlace";
-            this.maskedTextBoxPlace.Size = new System.Drawing.Size(44, 20);
-            this.maskedTextBoxPlace.TabIndex = 1;
+            this.maskedTextBoxParking.Location = new System.Drawing.Point(54, 39);
+            this.maskedTextBoxParking.Name = "maskedTextBoxParking";
+            this.maskedTextBoxParking.Size = new System.Drawing.Size(44, 20);
+            this.maskedTextBoxParking.TabIndex = 1;
             // 
             // pictureBoxParking
             // 
@@ -141,7 +141,7 @@
         private System.Windows.Forms.PictureBox pictureBoxTake;
         private System.Windows.Forms.Button buttonTakeoff;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.MaskedTextBox maskedTextBoxPlace;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxParking;
         private System.Windows.Forms.ListBox listBoxlevels;
         private System.Windows.Forms.Button buttonRequest;
     }

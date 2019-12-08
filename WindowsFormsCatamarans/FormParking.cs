@@ -46,9 +46,9 @@ namespace WindowsFormsCatamarans
         {
             if (listBoxlevels.SelectedIndex > -1)
             {
-                if (maskedTextBoxPlace.Text != "")
+                if (maskedTextBoxParking.Text != "")
                 {
-                    var cat = parking[listBoxlevels.SelectedIndex] - Convert.ToInt32(maskedTextBoxPlace.Text);
+                    var cat = parking[listBoxlevels.SelectedIndex] - Convert.ToInt32(maskedTextBoxParking.Text);
                     if (cat != null)
                     {
                         Bitmap bmp = new Bitmap(pictureBoxTake.Width, pictureBoxTake.Height);
