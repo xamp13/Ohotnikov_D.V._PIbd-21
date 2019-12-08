@@ -13,12 +13,16 @@ namespace WindowsFormsCatamarans
     public partial class FormParking : Form
     {
         MultiLevelParking parking;
+
+        FormCatamaranConfig form;
+
         private const int countLevel = 5;
         public FormParking()
 
         {
             InitializeComponent();
             parking = new MultiLevelParking(countLevel, pictureBoxParking.Width, pictureBoxParking.Height);
+            //заполнение listBox
             for (int i = 0; i < countLevel; i++)
             {
                 listBoxlevels.Items.Add("Уровень " + (i + 1));
@@ -29,7 +33,7 @@ namespace WindowsFormsCatamarans
         private void Draw()
         {
             if (listBoxlevels.SelectedIndex > -1)
-            {
+            {//если выбран один из пуктов в listBox (при старте программы ни один пункт не будет выбран и может возникнуть ошибка, если мы попытаемся обратиться к элементу listBox)
                 Bitmap bmp = new Bitmap(pictureBoxParking.Width, pictureBoxParking.Height);
                 Graphics gr = Graphics.FromImage(bmp);
                 parking[listBoxlevels.SelectedIndex].Draw(gr);
@@ -37,47 +41,8 @@ namespace WindowsFormsCatamarans
             }
         }
 
-        private void buttonParkBoat_Click(object sender, EventArgs e)
-        {
-            if (listBoxlevels.SelectedIndex > -1)
-            {
-                ColorDialog dialog = new ColorDialog();
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    var car = new CarCat(100, 1000, dialog.Color);
-                    int place = parking[listBoxlevels.SelectedIndex] + car;
-                    if (place == -1)
-                    {
-                        MessageBox.Show("Нет свободных мест", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    Draw();
-                }
-            }
-        }
 
-        private void buttonParkCatamaran_Click(object sender, EventArgs e)
-        {
-            if (listBoxlevels.SelectedIndex > -1)
-            {
-                ColorDialog dialog = new ColorDialog();
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    ColorDialog dialogDop = new ColorDialog();
-                    if (dialogDop.ShowDialog() == DialogResult.OK)
-                    {
-                        var cat = new CatamaranGrade(100, 1000, dialog.Color, dialogDop.Color, true, true);
-                        int place = parking[listBoxlevels.SelectedIndex] + cat;
-                        if (place == -1)
-                        {
-                            MessageBox.Show("Нет свободных мест", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        Draw();
-                    }
-                }
-            }
-        }
-
-        private void buttonTakeOff_Click(object sender, EventArgs e)
+        private void buttonTakeoff_Click(object sender, EventArgs e)
         {
             if (listBoxlevels.SelectedIndex > -1)
             {
@@ -86,16 +51,16 @@ namespace WindowsFormsCatamarans
                     var cat = parking[listBoxlevels.SelectedIndex] - Convert.ToInt32(maskedTextBoxParking.Text);
                     if (cat != null)
                     {
-                        Bitmap bmp = new Bitmap(pictureBoxParkingS.Width, pictureBoxParkingS.Height);
+                        Bitmap bmp = new Bitmap(pictureBoxTake.Width, pictureBoxTake.Height);
                         Graphics gr = Graphics.FromImage(bmp);
-                        cat.SetPosition(5, 5, pictureBoxParkingS.Width, pictureBoxParkingS.Height);
+                        cat.SetPosition(5, 5, pictureBoxTake.Width, pictureBoxTake.Height);
                         cat.DrawCatamaran(gr);
-                        pictureBoxParkingS.Image = bmp;
+                        pictureBoxTake.Image = bmp;
                     }
                     else
                     {
-                        Bitmap bmp = new Bitmap(pictureBoxParkingS.Width, pictureBoxParkingS.Height);
-                        pictureBoxParkingS.Image = bmp;
+                        Bitmap bmp = new Bitmap(pictureBoxTake.Width, pictureBoxTake.Height);
+                        pictureBoxTake.Image = bmp;
                     }
                     Draw();
                 }
@@ -105,6 +70,29 @@ namespace WindowsFormsCatamarans
         private void listBoxlevels_SelectedIndexChanged(object sender, EventArgs e)
         {
             Draw();
+        }
+
+        private void buttonRequest_Click(object sender, EventArgs e)
+        {
+            form = new FormCatamaranConfig();
+            form.AddEvent(AddBoat);
+            form.ShowDialog();
+        }
+
+        private void AddBoat(ITransport cat)
+        {
+            if (cat != null && listBoxlevels.SelectedIndex > -1)
+            {
+                int place = parking[listBoxlevels.SelectedIndex] + cat;
+                if (place > -1)
+                {
+                    Draw();
+                }
+                else
+                {
+                    MessageBox.Show("Машину не удалось поставить");
+                }
+            }
         }
     }
 }

@@ -28,121 +28,108 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBoxParking = new System.Windows.Forms.PictureBox();
-            this.buttonParkBoat = new System.Windows.Forms.Button();
-            this.buttonParkCatamaran = new System.Windows.Forms.Button();
-            this.groupBoxParking = new System.Windows.Forms.GroupBox();
-            this.pictureBoxParkingS = new System.Windows.Forms.PictureBox();
-            this.buttonTakeOff = new System.Windows.Forms.Button();
-            this.maskedTextBoxParking = new System.Windows.Forms.MaskedTextBox();
+            this.groupBoxTakeoff = new System.Windows.Forms.GroupBox();
+            this.pictureBoxTake = new System.Windows.Forms.PictureBox();
+            this.buttonTakeoff = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.maskedTextBoxParking = new System.Windows.Forms.MaskedTextBox();
+            this.pictureBoxParking = new System.Windows.Forms.PictureBox();
             this.listBoxlevels = new System.Windows.Forms.ListBox();
+            this.buttonRequest = new System.Windows.Forms.Button();
+            this.groupBoxTakeoff.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTake)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).BeginInit();
-            this.groupBoxParking.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParkingS)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBoxParking
+            // groupBoxTakeoff
             // 
-            this.pictureBoxParking.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBoxParking.Location = new System.Drawing.Point(0, 0);
-            this.pictureBoxParking.Name = "pictureBoxParking";
-            this.pictureBoxParking.Size = new System.Drawing.Size(753, 461);
-            this.pictureBoxParking.TabIndex = 0;
-            this.pictureBoxParking.TabStop = false;
+            this.groupBoxTakeoff.Controls.Add(this.pictureBoxTake);
+            this.groupBoxTakeoff.Controls.Add(this.buttonTakeoff);
+            this.groupBoxTakeoff.Controls.Add(this.label1);
+            this.groupBoxTakeoff.Controls.Add(this.maskedTextBoxParking);
+            this.groupBoxTakeoff.Location = new System.Drawing.Point(912, 288);
+            this.groupBoxTakeoff.Name = "groupBoxTakeoff";
+            this.groupBoxTakeoff.Size = new System.Drawing.Size(110, 211);
+            this.groupBoxTakeoff.TabIndex = 3;
+            this.groupBoxTakeoff.TabStop = false;
+            this.groupBoxTakeoff.Text = "Забрать лодку";
             // 
-            // buttonParkBoat
+            // pictureBoxTake
             // 
-            this.buttonParkBoat.Location = new System.Drawing.Point(773, 136);
-            this.buttonParkBoat.Name = "buttonParkBoat";
-            this.buttonParkBoat.Size = new System.Drawing.Size(99, 69);
-            this.buttonParkBoat.TabIndex = 1;
-            this.buttonParkBoat.Text = "Припарковать лодку";
-            this.buttonParkBoat.UseVisualStyleBackColor = true;
-            this.buttonParkBoat.Click += new System.EventHandler(this.buttonParkBoat_Click);
+            this.pictureBoxTake.Location = new System.Drawing.Point(0, 120);
+            this.pictureBoxTake.Name = "pictureBoxTake";
+            this.pictureBoxTake.Size = new System.Drawing.Size(98, 74);
+            this.pictureBoxTake.TabIndex = 4;
+            this.pictureBoxTake.TabStop = false;
             // 
-            // buttonParkCatamaran
+            // buttonTakeoff
             // 
-            this.buttonParkCatamaran.Location = new System.Drawing.Point(773, 211);
-            this.buttonParkCatamaran.Name = "buttonParkCatamaran";
-            this.buttonParkCatamaran.Size = new System.Drawing.Size(99, 69);
-            this.buttonParkCatamaran.TabIndex = 2;
-            this.buttonParkCatamaran.Text = "Припарковать катамаран";
-            this.buttonParkCatamaran.UseVisualStyleBackColor = true;
-            this.buttonParkCatamaran.Click += new System.EventHandler(this.buttonParkCatamaran_Click);
-            // 
-            // groupBoxParking
-            // 
-            this.groupBoxParking.Controls.Add(this.pictureBoxParkingS);
-            this.groupBoxParking.Controls.Add(this.buttonTakeOff);
-            this.groupBoxParking.Controls.Add(this.maskedTextBoxParking);
-            this.groupBoxParking.Controls.Add(this.label1);
-            this.groupBoxParking.Location = new System.Drawing.Point(773, 286);
-            this.groupBoxParking.Name = "groupBoxParking";
-            this.groupBoxParking.Size = new System.Drawing.Size(99, 163);
-            this.groupBoxParking.TabIndex = 3;
-            this.groupBoxParking.TabStop = false;
-            this.groupBoxParking.Text = "Забрать лодку";
-            // 
-            // pictureBoxParkingS
-            // 
-            this.pictureBoxParkingS.Location = new System.Drawing.Point(6, 79);
-            this.pictureBoxParkingS.Name = "pictureBoxParkingS";
-            this.pictureBoxParkingS.Size = new System.Drawing.Size(93, 78);
-            this.pictureBoxParkingS.TabIndex = 3;
-            this.pictureBoxParkingS.TabStop = false;
-            // 
-            // buttonTakeOff
-            // 
-            this.buttonTakeOff.Location = new System.Drawing.Point(9, 50);
-            this.buttonTakeOff.Name = "buttonTakeOff";
-            this.buttonTakeOff.Size = new System.Drawing.Size(84, 23);
-            this.buttonTakeOff.TabIndex = 2;
-            this.buttonTakeOff.Text = "Забрать";
-            this.buttonTakeOff.UseVisualStyleBackColor = true;
-            this.buttonTakeOff.Click += new System.EventHandler(this.buttonTakeOff_Click);
-            // 
-            // maskedTextBoxParking
-            // 
-            this.maskedTextBoxParking.Location = new System.Drawing.Point(53, 24);
-            this.maskedTextBoxParking.Name = "maskedTextBoxParking";
-            this.maskedTextBoxParking.Size = new System.Drawing.Size(40, 20);
-            this.maskedTextBoxParking.TabIndex = 1;
+            this.buttonTakeoff.Location = new System.Drawing.Point(11, 74);
+            this.buttonTakeoff.Name = "buttonTakeoff";
+            this.buttonTakeoff.Size = new System.Drawing.Size(87, 23);
+            this.buttonTakeoff.TabIndex = 3;
+            this.buttonTakeoff.Text = "Забрать";
+            this.buttonTakeoff.UseVisualStyleBackColor = true;
+            this.buttonTakeoff.Click += new System.EventHandler(this.buttonTakeoff_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 27);
+            this.label1.Location = new System.Drawing.Point(6, 42);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(42, 13);
-            this.label1.TabIndex = 0;
+            this.label1.TabIndex = 2;
             this.label1.Text = "Место:";
+            // 
+            // maskedTextBoxParking
+            // 
+            this.maskedTextBoxParking.Location = new System.Drawing.Point(54, 39);
+            this.maskedTextBoxParking.Name = "maskedTextBoxParking";
+            this.maskedTextBoxParking.Size = new System.Drawing.Size(44, 20);
+            this.maskedTextBoxParking.TabIndex = 1;
+            // 
+            // pictureBoxParking
+            // 
+            this.pictureBoxParking.Location = new System.Drawing.Point(3, 4);
+            this.pictureBoxParking.Name = "pictureBoxParking";
+            this.pictureBoxParking.Size = new System.Drawing.Size(889, 506);
+            this.pictureBoxParking.TabIndex = 0;
+            this.pictureBoxParking.TabStop = false;
             // 
             // listBoxlevels
             // 
             this.listBoxlevels.FormattingEnabled = true;
-            this.listBoxlevels.Location = new System.Drawing.Point(773, 9);
+            this.listBoxlevels.Location = new System.Drawing.Point(912, 12);
             this.listBoxlevels.Name = "listBoxlevels";
-            this.listBoxlevels.Size = new System.Drawing.Size(99, 121);
+            this.listBoxlevels.Size = new System.Drawing.Size(110, 108);
             this.listBoxlevels.TabIndex = 4;
             this.listBoxlevels.SelectedIndexChanged += new System.EventHandler(this.listBoxlevels_SelectedIndexChanged);
+            // 
+            // buttonRequest
+            // 
+            this.buttonRequest.Location = new System.Drawing.Point(912, 160);
+            this.buttonRequest.Name = "buttonRequest";
+            this.buttonRequest.Size = new System.Drawing.Size(110, 60);
+            this.buttonRequest.TabIndex = 5;
+            this.buttonRequest.Text = "Заказать";
+            this.buttonRequest.UseVisualStyleBackColor = true;
+            this.buttonRequest.Click += new System.EventHandler(this.buttonRequest_Click);
             // 
             // FormParking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 461);
+            this.ClientSize = new System.Drawing.Size(1034, 511);
+            this.Controls.Add(this.buttonRequest);
             this.Controls.Add(this.listBoxlevels);
-            this.Controls.Add(this.groupBoxParking);
-            this.Controls.Add(this.buttonParkCatamaran);
-            this.Controls.Add(this.buttonParkBoat);
+            this.Controls.Add(this.groupBoxTakeoff);
             this.Controls.Add(this.pictureBoxParking);
             this.Name = "FormParking";
-            this.Text = "FormParking";
+            this.Text = "Парковка";
+            this.groupBoxTakeoff.ResumeLayout(false);
+            this.groupBoxTakeoff.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTake)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).EndInit();
-            this.groupBoxParking.ResumeLayout(false);
-            this.groupBoxParking.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParkingS)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -150,13 +137,12 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxParking;
-        private System.Windows.Forms.Button buttonParkBoat;
-        private System.Windows.Forms.Button buttonParkCatamaran;
-        private System.Windows.Forms.GroupBox groupBoxParking;
-        private System.Windows.Forms.PictureBox pictureBoxParkingS;
-        private System.Windows.Forms.Button buttonTakeOff;
-        private System.Windows.Forms.MaskedTextBox maskedTextBoxParking;
+        private System.Windows.Forms.GroupBox groupBoxTakeoff;
+        private System.Windows.Forms.PictureBox pictureBoxTake;
+        private System.Windows.Forms.Button buttonTakeoff;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxParking;
         private System.Windows.Forms.ListBox listBoxlevels;
+        private System.Windows.Forms.Button buttonRequest;
     }
 }

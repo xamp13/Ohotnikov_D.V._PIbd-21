@@ -6,6 +6,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsCatamarans
 {
+    public delegate void catDelegate(ITransport cat);
     static class Program
     {
         /// <summary>

@@ -7,12 +7,14 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsCatamarans
 {
-    interface ITransport
+    public interface ITransport
     {
         void SetPosition(int x, int y, int width, int height);
 
         void MoveBoat(Direction direction);
 
         void DrawCatamaran(Graphics g);
+
+        void SetMainColor(Color color);
     }
 }

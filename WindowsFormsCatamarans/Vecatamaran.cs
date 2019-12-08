@@ -30,9 +30,14 @@ namespace WindowsFormsCatamarans
             _pictureHeight = height;
             _pictureWidth = width;
         }
+
+        public void SetMainColor(Color color)
+        {
+            MainColor = color;
+        }
+
         public abstract void DrawCatamaran(Graphics g);
 
         public abstract void MoveBoat(Direction direction);
     }
 }
-
