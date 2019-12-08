@@ -25,34 +25,31 @@ namespace WindowsFormsCatamarans
             DopColor = dopColor;
             Sail = sail;
             Motor = motor;
+
         }
 
         public override void DrawCatamaran(Graphics g)
         {
             Pen pen = new Pen(Color.Black);
-            Brush dopBrush = new SolidBrush(Color.Black);
+            Brush dopBrush = new SolidBrush(DopColor);
             base.DrawCatamaran(g);
 
             if (Sail)
             {
-                Brush brGray = new SolidBrush(Color.Black);
-                g.FillRectangle(brGray, _startPosX + 20, _startPosY + 17, 65, 5);
-                g.FillRectangle(brGray, _startPosX + 20, _startPosY + 22, 65, 5);
-
-                Brush brBlack = new SolidBrush(Color.Black);
-                g.FillRectangle(brBlack, _startPosX + 50, _startPosY + 10, 3, 7);
-                g.FillRectangle(brBlack, _startPosX + 60, _startPosY + 10, 3, 7);
-                g.FillRectangle(brBlack, _startPosX + 60, _startPosY + 27, 3, 8);
-                g.FillRectangle(brBlack, _startPosX + 50, _startPosY + 27, 3, 8);
+                g.FillRectangle(dopBrush, _startPosX + 20, _startPosY + 17, 65, 5);
+                g.FillRectangle(dopBrush, _startPosX + 20, _startPosY + 22, 65, 5);
+                g.FillRectangle(dopBrush, _startPosX + 50, _startPosY + 10, 3, 7);
+                g.FillRectangle(dopBrush, _startPosX + 60, _startPosY + 10, 3, 7);
+                g.FillRectangle(dopBrush, _startPosX + 60, _startPosY + 27, 3, 8);
+                g.FillRectangle(dopBrush, _startPosX + 50, _startPosY + 27, 3, 8);
             }
 
             if (Motor)
             {
-                Brush brBlack = new SolidBrush(Color.Black);
-                g.FillRectangle(brBlack, _startPosX, _startPosY - 5, 90, 5);
-                g.FillRectangle(brBlack, _startPosX, _startPosY + 43, 90, 7);
-                g.FillRectangle(brBlack, _startPosX + 15, _startPosY - 5, 3, 45);
-                g.FillRectangle(brBlack, _startPosX - 5, _startPosY + 15, 20, 15);
+                g.FillRectangle(dopBrush, _startPosX, _startPosY - 5, 90, 5);
+                g.FillRectangle(dopBrush, _startPosX, _startPosY + 43, 90, 7);
+                g.FillRectangle(dopBrush, _startPosX + 15, _startPosY - 5, 3, 45);
+                g.FillRectangle(dopBrush, _startPosX - 5, _startPosY + 15, 20, 15);
 
             }
 
@@ -61,6 +58,11 @@ namespace WindowsFormsCatamarans
             g.FillRectangle(brBlue, _startPosX, _startPosY + 35, 90, 10);
             g.FillRectangle(brBlue, _startPosX + 35, _startPosY, 10, 35);
 
+        }
+
+        public void SetDopColor(Color color)
+        {
+            DopColor = color;
         }
     }
 }
