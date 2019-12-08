@@ -9,6 +9,7 @@ namespace WindowsFormsCatamarans
 {
     public class CarCat : Vecatamaran
     {
+
         protected const int catamaranWidth = 90;
         protected const int catamaranHeight = 50;
 
@@ -17,6 +18,17 @@ namespace WindowsFormsCatamarans
             MaxSpeed = maxSpeed;
             Weight = weight;
             MainColor = mainColor;
+        }
+
+        public CarCat(string info)
+        {
+            string[] strs = info.Split(';');
+            if (strs.Length == 3)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+            }
         }
 
         public override void MoveBoat(Direction direction)
@@ -57,13 +69,18 @@ namespace WindowsFormsCatamarans
         public override void DrawCatamaran(Graphics g)
         {
             Pen pen = new Pen(Color.Black);
-            Brush brBlue = new SolidBrush(MainColor);
+            Brush mainBrush = new SolidBrush(MainColor);
             Brush brGray = new SolidBrush(Color.Gray);
 
-            g.FillRectangle(brBlue, _startPosX, _startPosY, 90, 10);
-            g.FillRectangle(brBlue, _startPosX, _startPosY + 35, 90, 10);
+            g.FillRectangle(mainBrush, _startPosX, _startPosY, 90, 10);
+            g.FillRectangle(mainBrush, _startPosX, _startPosY + 35, 90, 10);
             g.FillRectangle(brGray, _startPosX, _startPosY + 5, 90, 35);
-            g.FillRectangle(brBlue, _startPosX + 35, _startPosY, 10, 45);
+            g.FillRectangle(mainBrush, _startPosX + 35, _startPosY, 10, 45);
+        }
+
+        public override string ToString()
+        {
+            return MaxSpeed + ";" + Weight + ";" + MainColor.Name;
         }
     }
 }
