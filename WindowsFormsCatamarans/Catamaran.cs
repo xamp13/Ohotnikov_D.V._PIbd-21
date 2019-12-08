@@ -85,6 +85,7 @@ namespace WindowsFormsCatamarans
                     break;
             }
         }
+
         public void DrawCatamaran(Graphics g)
         {
             Pen pen = new Pen(Color.Black);
@@ -102,7 +103,7 @@ namespace WindowsFormsCatamarans
                 g.FillRectangle(brBlack, _startPosX + 50, _startPosY + 27, 3, 8);
             }
 
-            if (Motor) 
+            if (Motor)
             {
                 Brush brBlack = new SolidBrush(Color.Black);
                 g.FillRectangle(brBlack, _startPosX, _startPosY - 5, 30, 7);
