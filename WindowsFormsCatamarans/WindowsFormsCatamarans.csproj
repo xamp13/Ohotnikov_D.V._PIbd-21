@@ -46,7 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CarCat.cs" />
     <Compile Include="Catamaran.cs" />
+    <Compile Include="CatamaranGrade.cs" />
     <Compile Include="Enum.cs" />
     <Compile Include="FormCatamarans.cs">
       <SubType>Form</SubType>
@@ -54,8 +56,10 @@
     <Compile Include="FormCatamarans.Designer.cs">
       <DependentUpon>FormCatamarans.cs</DependentUpon>
     </Compile>
+    <Compile Include="ITransport.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vecatamaran.cs" />
     <EmbeddedResource Include="FormCatamarans.resx">
       <DependentUpon>FormCatamarans.cs</DependentUpon>
     </EmbeddedResource>
