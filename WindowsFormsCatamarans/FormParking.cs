@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NLog;
+
 
 namespace WindowsFormsCatamarans
 {
@@ -20,10 +22,14 @@ namespace WindowsFormsCatamarans
         FormCatamaranConfig form;
 
         private const int countLevel = 5;
+
+        private Logger logger;
+
         public FormParking()
 
         {
             InitializeComponent();
+            logger = LogManager.GetCurrentClassLogger();
             parking = new MultiLevelParking(countLevel, pictureBoxParking.Width, pictureBoxParking.Height);
             //заполнение listBox
             for (int i = 0; i < countLevel; i++)
@@ -51,21 +57,31 @@ namespace WindowsFormsCatamarans
             {
                 if (maskedTextBoxParking.Text != "")
                 {
-                    var cat = parking[listBoxlevels.SelectedIndex] - Convert.ToInt32(maskedTextBoxParking.Text);
-                    if (cat != null)
+                    try
                     {
+                        var cat = parking[listBoxlevels.SelectedIndex] - Convert.ToInt32(maskedTextBoxParking.Text);
+                        if (cat != null)
+                        {
+                            Bitmap bmp = new Bitmap(pictureBoxTake.Width, pictureBoxTake.Height);
+                            Graphics gr = Graphics.FromImage(bmp);
+                            cat.SetPosition(5, 5, pictureBoxTake.Width, pictureBoxTake.Height);
+                            cat.DrawCatamaran(gr);
+                            logger.Info($"Изъята лодка {cat.ToString()} с места {maskedTextBoxParking.Text}");
+                            pictureBoxTake.Image = bmp;
+                        }
+                    }
+                    catch (ParkingNotFoundException ex)
+                    {
+                        logger.Warn(ex.Message);
+                        MessageBox.Show(ex.Message, "Не найдено", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         Bitmap bmp = new Bitmap(pictureBoxTake.Width, pictureBoxTake.Height);
-                        Graphics gr = Graphics.FromImage(bmp);
-                        cat.SetPosition(5, 5, pictureBoxTake.Width, pictureBoxTake.Height);
-                        cat.DrawCatamaran(gr);
                         pictureBoxTake.Image = bmp;
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        Bitmap bmp = new Bitmap(pictureBoxTake.Width, pictureBoxTake.Height);
-                        pictureBoxTake.Image = bmp;
+                        logger.Warn(ex.Message);
+                        MessageBox.Show(ex.Message, "Неизвестная ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    Draw();
                 }
             }
         }
@@ -86,14 +102,21 @@ namespace WindowsFormsCatamarans
         {
             if (cat != null && listBoxlevels.SelectedIndex > -1)
             {
-                int place = parking[listBoxlevels.SelectedIndex] + cat;
-                if (place > -1)
+                try
                 {
+                    int place = parking[listBoxlevels.SelectedIndex] + cat;
                     Draw();
+                    logger.Info($"Лодка {cat.ToString()} помещена на место {place}");
                 }
-                else
+                catch (ParkingOverflowException ex)
                 {
-                    MessageBox.Show("Машину не удалось поставить");
+                    logger.Warn(ex.Message);
+                    MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    logger.Warn(ex.Message);
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -102,15 +125,16 @@ namespace WindowsFormsCatamarans
         {
             if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                if (parking.SaveData(saveFileDialog.FileName))
+                try
                 {
-                    MessageBox.Show("Сохранение прошло успешно", "Результат",
-                   MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    parking.SaveData(saveFileDialog.FileName);
+                    MessageBox.Show("Сохранение прошло успешно", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    logger.Info("Сохранено в файл " + saveFileDialog.FileName);
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Не сохранилось", "Результат",
-                   MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Warn(ex.Message);
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -119,14 +143,22 @@ namespace WindowsFormsCatamarans
         {
             if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                if (parking.LoadData(openFileDialog.FileName))
+                try
                 {
+                    parking.LoadData(openFileDialog.FileName);
                     MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    logger.Info("Загружено из файла " + openFileDialog.FileName);
                 }
-                else
+
+                catch (ParkingOccupiedPlaceException ex)
                 {
-                    MessageBox.Show("Не загрузили", "Результат", MessageBoxButtons.OK,
-                   MessageBoxIcon.Error);
+                    logger.Warn(ex.Message);
+                    MessageBox.Show(ex.Message, "Занятое место", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    logger.Warn(ex.Message);
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка при загрузке", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 Draw();
             }

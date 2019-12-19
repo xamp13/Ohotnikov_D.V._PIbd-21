@@ -34,7 +34,7 @@ namespace WindowsFormsCatamarans
         {
             if (p._places.Count == p._maxCount)
             {
-                return -1;
+                throw new ParkingOverflowException();
             }
             for (int i = 0; i < p._maxCount; i++)
             {
@@ -57,7 +57,8 @@ namespace WindowsFormsCatamarans
                 p._places.Remove(index);
                 return cat;
             }
-            return null;
+            else
+                throw new ParkingNotFoundException(index);
         }
 
         private bool CheckFreePlace(int index)
@@ -98,7 +99,8 @@ namespace WindowsFormsCatamarans
                 {
                     return _places[ind];
                 }
-                return null;
+                else
+                    return null;
             }
             set
             {
@@ -108,6 +110,8 @@ namespace WindowsFormsCatamarans
                     _places[ind].SetPosition(5 + ind / 5 * _placeSizeWidth + 5, ind % 5
                     * _placeSizeHeight + 15, PictureWidth, PictureHeight);
                 }
+                else
+                    throw new ParkingOccupiedPlaceException(ind);
             }
         }
     }
