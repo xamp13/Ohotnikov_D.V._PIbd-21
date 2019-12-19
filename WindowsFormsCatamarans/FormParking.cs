@@ -12,9 +12,6 @@ namespace WindowsFormsCatamarans
 {
     public partial class FormParking : Form
     {
-        /// <summary>
-        /// Объект от класса многоуровневой парковки
-        /// </summary>
         MultiLevelParking parking;
 
         FormCatamaranConfig form;
@@ -25,7 +22,7 @@ namespace WindowsFormsCatamarans
         {
             InitializeComponent();
             parking = new MultiLevelParking(countLevel, pictureBoxParking.Width, pictureBoxParking.Height);
-            //заполнение listBox
+
             for (int i = 0; i < countLevel; i++)
             {
                 listBoxlevels.Items.Add("Уровень " + (i + 1));
@@ -36,7 +33,7 @@ namespace WindowsFormsCatamarans
         private void Draw()
         {
             if (listBoxlevels.SelectedIndex > -1)
-            {//если выбран один из пуктов в listBox (при старте программы ни один пункт не будет выбран и может возникнуть ошибка, если мы попытаемся обратиться к элементу listBox)
+            {
                 Bitmap bmp = new Bitmap(pictureBoxParking.Width, pictureBoxParking.Height);
                 Graphics gr = Graphics.FromImage(bmp);
                 parking[listBoxlevels.SelectedIndex].Draw(gr);
@@ -104,13 +101,11 @@ namespace WindowsFormsCatamarans
             {
                 if (parking.SaveData(saveFileDialog.FileName))
                 {
-                    MessageBox.Show("Сохранение прошло успешно", "Результат",
-                   MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Сохранение прошло успешно", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    MessageBox.Show("Не сохранилось", "Результат",
-                   MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Не сохранилось", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

@@ -63,7 +63,6 @@ namespace WindowsFormsCatamarans
                 g.FillRectangle(dopBrush, _startPosX, _startPosY + 43, 90, 7);
                 g.FillRectangle(dopBrush, _startPosX + 15, _startPosY - 5, 3, 45);
                 g.FillRectangle(dopBrush, _startPosX - 5, _startPosY + 15, 20, 15);
-
             }
 
             Brush brBlue = new SolidBrush(MainColor);
