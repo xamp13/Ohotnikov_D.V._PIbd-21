@@ -9,7 +9,6 @@ namespace WindowsFormsCatamarans
 {
     class Parking<T> where T : class, ITransport
     {
-
         private Dictionary<int, T> _places;
 
         private int _maxCount;
