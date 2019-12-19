@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using NLog;
 
-
 namespace WindowsFormsCatamarans
 {
     public partial class FormParking : Form
