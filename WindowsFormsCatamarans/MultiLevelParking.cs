@@ -38,24 +38,26 @@ namespace WindowsFormsCatamarans
                 foreach (var level in parkingStages)
                 {
                     fs.WriteLine("Level");
-                    for (int i = 0; i < countPlaces; i++)
+                    foreach (ITransport cat in level)
                     {
-                        try
+                        if (cat.GetType().Name == "CarCat")
                         {
-                            var cat = level[i];
-                            if (cat?.GetType().Name == "CarCat")
-                                fs.WriteLine($"{i}:CarCat:" + cat);
-
-                            if (cat?.GetType().Name == "CatamaranGrade")
-                                fs.WriteLine($"{i}:CatamaranGrade:" + cat);
+                            fs.Write(level.GetKey + ":CarCat:");
                         }
-
-                        finally { }
+                        if (cat.GetType().Name == "CatamaranGrade")
+                        {
+                            fs.Write(level.GetKey + ":CatamaranGrade:");
+                        }
+                        fs.WriteLine(cat);
                     }
                 }
             }
         }
-
+        private void WriteToFile(string text, FileStream stream)
+        {
+            byte[] info = new UTF8Encoding(true).GetBytes(text);
+            stream.Write(info, 0, info.Length);
+        }
         public void LoadData(string filename)
         {
             if (!File.Exists(filename))
@@ -110,6 +112,11 @@ namespace WindowsFormsCatamarans
                 }
                 return null;
             }
+        }
+
+        public void Sort()
+        {
+            parkingStages.Sort();
         }
     }
 }
