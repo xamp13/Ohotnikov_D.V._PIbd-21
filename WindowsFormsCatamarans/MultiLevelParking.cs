@@ -26,7 +26,7 @@ namespace WindowsFormsCatamarans
             }
         }
 
-        public bool SaveData(string filename)
+        public void SaveData(string filename)
         {
             if (File.Exists(filename))
             {
@@ -40,29 +40,27 @@ namespace WindowsFormsCatamarans
                     fs.WriteLine("Level");
                     for (int i = 0; i < countPlaces; i++)
                     {
-                        var cat = level[i];
-                        if (cat != null)
+                        try
                         {
-                            if (cat.GetType().Name == "CarCat")
-                            {
+                            var cat = level[i];
+                            if (cat?.GetType().Name == "CarCat")
                                 fs.WriteLine($"{i}:CarCat:" + cat);
-                            }
-                            if (cat.GetType().Name == "CatamaranGrade")
-                            {
+
+                            if (cat?.GetType().Name == "CatamaranGrade")
                                 fs.WriteLine($"{i}:CatamaranGrade:" + cat);
-                            }
                         }
+
+                        finally { }
                     }
                 }
             }
-            return true;
         }
 
-        public bool LoadData(string filename)
+        public void LoadData(string filename)
         {
             if (!File.Exists(filename))
             {
-                return false;
+                throw new FileNotFoundException();
             }
             string buff = "";
             using (StreamReader fs = new StreamReader(File.OpenRead(filename)))
@@ -76,7 +74,7 @@ namespace WindowsFormsCatamarans
                     parkingStages = new List<Parking<ITransport>>(countLevel);
                 }
                 else
-                    return false;
+                    throw new Exception("Неверный формат файла");
                 int count = -1;
                 while (!fs.EndOfStream)
                 {
@@ -100,7 +98,6 @@ namespace WindowsFormsCatamarans
                     }
                 }
             }
-            return true;
         }
 
         public Parking<ITransport> this[int ind]
