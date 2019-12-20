@@ -24,7 +24,20 @@ namespace WindowsFormsCatamarans
             DopColor = dopColor;
             Sail = sail;
             Motor = motor;
+        }
 
+        public CatamaranGrade(string info) : base(info)
+        {
+            string[] strs = info.Split(';');
+            if (strs.Length == 6)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+                DopColor = Color.FromName(strs[3]);
+                Sail = Convert.ToBoolean(strs[4]);
+                Motor = Convert.ToBoolean(strs[5]);
+            }
         }
 
         public override void DrawCatamaran(Graphics g)
@@ -49,7 +62,6 @@ namespace WindowsFormsCatamarans
                 g.FillRectangle(dopBrush, _startPosX, _startPosY + 43, 90, 7);
                 g.FillRectangle(dopBrush, _startPosX + 15, _startPosY - 5, 3, 45);
                 g.FillRectangle(dopBrush, _startPosX - 5, _startPosY + 15, 20, 15);
-
             }
             Brush brBlue = new SolidBrush(MainColor);
             g.FillRectangle(brBlue, _startPosX, _startPosY, 90, 10);
@@ -60,6 +72,11 @@ namespace WindowsFormsCatamarans
         public void SetDopColor(Color color)
         {
             DopColor = color;
+        }
+
+        public override string ToString()
+        {
+            return base.ToString() + ";" + DopColor.Name + ";" + Sail + ";" + Motor;
         }
     }
 }

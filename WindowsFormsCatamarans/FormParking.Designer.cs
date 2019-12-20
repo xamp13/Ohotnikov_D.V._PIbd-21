@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBoxTakeoff = new System.Windows.Forms.GroupBox();
+            this.groupBoxTake = new System.Windows.Forms.GroupBox();
             this.pictureBoxTake = new System.Windows.Forms.PictureBox();
             this.buttonTakeoff = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -36,27 +36,34 @@
             this.pictureBoxParking = new System.Windows.Forms.PictureBox();
             this.listBoxlevels = new System.Windows.Forms.ListBox();
             this.buttonRequest = new System.Windows.Forms.Button();
-            this.groupBoxTakeoff.SuspendLayout();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.загрузитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.groupBoxTake.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTake)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).BeginInit();
+            this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupBoxTakeoff
+            // groupBoxTake
             // 
-            this.groupBoxTakeoff.Controls.Add(this.pictureBoxTake);
-            this.groupBoxTakeoff.Controls.Add(this.buttonTakeoff);
-            this.groupBoxTakeoff.Controls.Add(this.label1);
-            this.groupBoxTakeoff.Controls.Add(this.maskedTextBoxParking);
-            this.groupBoxTakeoff.Location = new System.Drawing.Point(912, 288);
-            this.groupBoxTakeoff.Name = "groupBoxTakeoff";
-            this.groupBoxTakeoff.Size = new System.Drawing.Size(110, 211);
-            this.groupBoxTakeoff.TabIndex = 3;
-            this.groupBoxTakeoff.TabStop = false;
-            this.groupBoxTakeoff.Text = "Забрать лодку";
+            this.groupBoxTake.Controls.Add(this.pictureBoxTake);
+            this.groupBoxTake.Controls.Add(this.buttonTakeoff);
+            this.groupBoxTake.Controls.Add(this.label1);
+            this.groupBoxTake.Controls.Add(this.maskedTextBoxParking);
+            this.groupBoxTake.Location = new System.Drawing.Point(912, 277);
+            this.groupBoxTake.Name = "groupBoxTake";
+            this.groupBoxTake.Size = new System.Drawing.Size(110, 211);
+            this.groupBoxTake.TabIndex = 3;
+            this.groupBoxTake.TabStop = false;
+            this.groupBoxTake.Text = "Забрать лодку";
             // 
             // pictureBoxTake
             // 
-            this.pictureBoxTake.Location = new System.Drawing.Point(0, 120);
+            this.pictureBoxTake.Location = new System.Drawing.Point(6, 120);
             this.pictureBoxTake.Name = "pictureBoxTake";
             this.pictureBoxTake.Size = new System.Drawing.Size(98, 74);
             this.pictureBoxTake.TabIndex = 4;
@@ -90,9 +97,9 @@
             // 
             // pictureBoxParking
             // 
-            this.pictureBoxParking.Location = new System.Drawing.Point(3, 4);
+            this.pictureBoxParking.Location = new System.Drawing.Point(0, 27);
             this.pictureBoxParking.Name = "pictureBoxParking";
-            this.pictureBoxParking.Size = new System.Drawing.Size(889, 506);
+            this.pictureBoxParking.Size = new System.Drawing.Size(889, 520);
             this.pictureBoxParking.TabIndex = 0;
             this.pictureBoxParking.TabStop = false;
             // 
@@ -115,6 +122,48 @@
             this.buttonRequest.UseVisualStyleBackColor = true;
             this.buttonRequest.Click += new System.EventHandler(this.buttonRequest_Click);
             // 
+            // menuStrip
+            // 
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.файлToolStripMenuItem});
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(1034, 24);
+            this.menuStrip.TabIndex = 6;
+            this.menuStrip.Text = "menuStrip1";
+            // 
+            // файлToolStripMenuItem
+            // 
+            this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.сохранитьToolStripMenuItem,
+            this.загрузитьToolStripMenuItem});
+            this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.файлToolStripMenuItem.Text = "Файл";
+            // 
+            // сохранитьToolStripMenuItem
+            // 
+            this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.сохранитьToolStripMenuItem.Text = "Сохранить";
+            this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.сохранитьToolStripMenuItem_Click);
+            // 
+            // загрузитьToolStripMenuItem
+            // 
+            this.загрузитьToolStripMenuItem.Name = "загрузитьToolStripMenuItem";
+            this.загрузитьToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.загрузитьToolStripMenuItem.Text = "Загрузить";
+            this.загрузитьToolStripMenuItem.Click += new System.EventHandler(this.загрузитьToolStripMenuItem_Click);
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog1";
+            this.openFileDialog.Filter = "txt file | *.txt";
+            // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.Filter = "txt file | *.txt";
+            // 
             // FormParking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -122,27 +171,38 @@
             this.ClientSize = new System.Drawing.Size(1034, 511);
             this.Controls.Add(this.buttonRequest);
             this.Controls.Add(this.listBoxlevels);
-            this.Controls.Add(this.groupBoxTakeoff);
+            this.Controls.Add(this.groupBoxTake);
             this.Controls.Add(this.pictureBoxParking);
+            this.Controls.Add(this.menuStrip);
+            this.MainMenuStrip = this.menuStrip;
             this.Name = "FormParking";
             this.Text = "Парковка";
-            this.groupBoxTakeoff.ResumeLayout(false);
-            this.groupBoxTakeoff.PerformLayout();
+            this.groupBoxTake.ResumeLayout(false);
+            this.groupBoxTake.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTake)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).EndInit();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxParking;
-        private System.Windows.Forms.GroupBox groupBoxTakeoff;
+        private System.Windows.Forms.GroupBox groupBoxTake;
         private System.Windows.Forms.PictureBox pictureBoxTake;
         private System.Windows.Forms.Button buttonTakeoff;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxParking;
         private System.Windows.Forms.ListBox listBoxlevels;
         private System.Windows.Forms.Button buttonRequest;
+        private System.Windows.Forms.MenuStrip menuStrip;
+        private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem сохранитьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem загрузитьToolStripMenuItem;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
     }
 }
