@@ -56,7 +56,7 @@ namespace WindowsFormsCatamarans
             }
         }
 
-        public bool LoadData(string filename)
+        public void LoadData(string filename)
         {
             if (!File.Exists(filename))
             {
