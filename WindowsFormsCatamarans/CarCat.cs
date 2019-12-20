@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsCatamarans
 {
-    public class CarCat : Vecatamaran
+    public class CarCat : Vecatamaran, IComparable<CarCat>, IEquatable<CarCat>
     {
         protected const int catamaranWidth = 90;
         protected const int catamaranHeight = 50;
@@ -80,6 +80,72 @@ namespace WindowsFormsCatamarans
         public override string ToString()
         {
             return MaxSpeed + ";" + Weight + ";" + MainColor.Name;
+        }
+
+        public int CompareTo(CarCat other)
+        {
+            if (other == null)
+            {
+                return 1;
+            }
+            if (MaxSpeed != other.MaxSpeed)
+            {
+                return MaxSpeed.CompareTo(other.MaxSpeed);
+            }
+            if (Weight != other.Weight)
+            {
+                return Weight.CompareTo(other.Weight);
+            }
+            if (MainColor != other.MainColor)
+            {
+                MainColor.Name.CompareTo(other.MainColor.Name);
+            }
+            return 0;
+        }
+
+        public bool Equals(CarCat other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            if (GetType().Name != other.GetType().Name)
+            {
+                return false;
+            }
+            if (MaxSpeed != other.MaxSpeed)
+            {
+                return false;
+            }
+            if (Weight != other.Weight)
+            {
+                return false;
+            }
+            if (MainColor != other.MainColor)
+            {
+                return false;
+            }
+            return true;
+        }
+
+
+        public override bool Equals(Object obj)
+        {
+            if (obj == null) { return false; }
+
+            if (!(obj is CarCat boatObj))
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(boatObj);
+            }
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }

@@ -46,8 +46,7 @@ namespace WindowsFormsCatamarans
             }
         }
 
-
-        private void buttonTakeoff_Click(object sender, EventArgs e)
+         private void buttonTakeoff_Click(object sender, EventArgs e)
         {
             if (listBoxlevels.SelectedIndex > -1)
             {
@@ -109,6 +108,11 @@ namespace WindowsFormsCatamarans
                     logger.Warn(ex.Message);
                     MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                catch (ParkingAlreadyHaveException ex)
+                {
+                    logger.Warn(ex.Message);
+                    MessageBox.Show(ex.Message, "Дублирование", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 catch (Exception ex)
                 {
                     logger.Warn(ex.Message);
@@ -158,6 +162,13 @@ namespace WindowsFormsCatamarans
                 }
                 Draw();
             }
+        }
+
+        private void buttonSort_Click(object sender, EventArgs e)
+        {
+            parking.Sort();
+            Draw();
+            logger.Info("Сортировка уровней");
         }
     }
 }
